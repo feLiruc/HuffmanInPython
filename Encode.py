@@ -25,3 +25,35 @@ class Node(object):
     # Implementaçã de sobrecarga de método LESS THAN necessaria pra verificação da queue no Python3
     def __lt__(self, other):
         return self.peso < other.peso
+
+def Huffman(input, nomeArquivo):
+    itemqueue =  [Node(a,len(list(b))) for a,b in groupby(sorted(input))]
+    itemqueue = sorted(itemqueue,reverse=True)
+    while len(itemqueue) > 1:
+        e = heappop(itemqueue)
+        d = heappop(itemqueue)
+        n = Node(None, d.peso+e.peso)
+        n.setChildren(e,d)
+        heappush(itemqueue, n)
+
+    codes = {}
+
+    def codeIt(s, node):
+        if node.dado:
+            if not s:
+                codes[node.dado] = "0"
+            else:
+                codes[node.dado] = s
+        else:
+            codeIt(s+"0", node.esquerda)
+            codeIt(s+"1", node.direita)
+
+    codeIt("",itemqueue[0])
+
+    try:
+        f = open(nomeArquivo+".enc", 'w')
+        f.write(str(codes)+"\n")
+        f.write("".join([codes[a] for a in input]))
+        f.close()
+    except:
+        print("Erro ao abrir arquivo, tente novamente")
