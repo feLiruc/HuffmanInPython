@@ -21,9 +21,7 @@ class Node(object):
     # Método sobreposto pra visualização das informações(print) dentro do nó
     def __repr__(self):
         return "Dado: "+str(self.dado)+" - Peso: "+str(self.peso)+" - esquerda: "+str(self.esquerda)+" - direita: "+str(self.direita)+"\n"
-    
-    def __cmp__(self, other):
-        return cmp(self.peso, other.peso)
 
+    # Implementaçã de sobrecarga de método LESS THAN necessaria pra verificação da queue no Python3
     def __lt__(self, other):
         return self.peso < other.peso
