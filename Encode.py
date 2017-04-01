@@ -26,7 +26,7 @@ class Node(object):
     def __lt__(self, other):
         return self.peso < other.peso
 
-def Huffman(input, nomeArquivo):
+def EncodeHuffman(input, nomeArquivo):
     itemqueue =  [Node(a,len(list(b))) for a,b in groupby(sorted(input))]
     itemqueue = sorted(itemqueue,reverse=True)
     while len(itemqueue) > 1:
