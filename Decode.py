@@ -15,4 +15,10 @@ def DecodeHuffman(tree, input, nomeArquivo):
             finalString += [x[1] for x in j if test in x][0]
             test = ''
 
-    print(finalString)
+    try:
+        f = open(nomeArquivo[:-3]+"dec", 'w')
+        f.write(finalString)
+        f.close()
+        print("Arquivo salvo com sucesso com o nome: "+nomeArquivo[:-3]+"dec")
+    except:
+        print("Erro ao abrir arquivo, tente novamente")

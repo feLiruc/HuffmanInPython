@@ -55,5 +55,6 @@ def EncodeHuffman(input, nomeArquivo):
         f.write(str(codes)+"\n")
         f.write("".join([codes[a] for a in input]))
         f.close()
+        print("Arquivo salvo com sucesso com o nome: "+nomeArquivo+".enc")
     except:
         print("Erro ao abrir arquivo, tente novamente")

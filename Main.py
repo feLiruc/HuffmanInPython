@@ -29,7 +29,6 @@ if __name__ == '__main__':
             except:
                 print("Arquivo não encontrado, tente novamente")
         elif sys.argv[1] == "decode":
-            print("decode")
             print("Tentando decodificar o arquivo: "+sys.argv[2])
             f = open(sys.argv[2],'r')
             argumentos = {}
